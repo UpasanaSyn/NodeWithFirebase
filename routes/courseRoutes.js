@@ -9,6 +9,4 @@ router.get('/course/:id', getCourse);
 router.delete('/courses/:id', deleteCourse);
 router.put('/courses', addCourse);
 
-
-
 module.exports={routes: router};

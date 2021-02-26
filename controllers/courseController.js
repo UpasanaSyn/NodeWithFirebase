@@ -1,12 +1,9 @@
 const { all } = require('underscore');
 const firebase = require('../db');
-// const course = require('../models');
 const fireDb = firebase.database();
 
 const addCourse = async (req, res, next) => {
     try {
-        // const courseData = req.body;
-        console.log('--req--', req.body);
         var allCourses = await fireDb.ref('courses/');
         
         await allCourses.orderByChild('id').equalTo(req.body.id).once('value', (snapshot) => {
@@ -113,13 +110,10 @@ const deleteCourse = async (req, res, next) => {
               } else {
                 res.status(200).send('Record not found!');
               }
-        
         });
-            
-    }catch (error) {
+    } catch (error) {
             res.status(400).send(error.message);
         }
 }
-
 
 module.exports={addCourse, getAllCourses, getCourse, deleteCourse};
